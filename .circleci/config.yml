@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/target-s3
+    docker:
+      - image: demandjump/dj-sbt-docker:0.13.15
+    steps:
+      - checkout
+      - setup_remote_docker
+      - deploy:
+          name: Publish to dockerhub
+          command: 
+            ~/docker-build.sh
